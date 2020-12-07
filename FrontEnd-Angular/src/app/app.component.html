@@ -1,14 +1,14 @@
 
-<!--<ng-template #content>-->
+<ng-template #content>
   <div class="container">
     <app-navigation></app-navigation>
     <router-outlet></router-outlet>
     <app-footer></app-footer>
   </div>
-<!--</ng-template>-->
+</ng-template>
 
 <ng-template #loading>
   <div>LOADING...</div>
 </ng-template>
 
-<!--<ng-container *ngTemplateOutlet="(isReady$ | async) ? content : loading"></ng-container>-->
+<ng-container *ngTemplateOutlet="(isReady$ | async) ? content : loading"></ng-container>
