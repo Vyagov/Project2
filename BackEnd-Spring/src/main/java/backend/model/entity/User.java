@@ -5,7 +5,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,7 +16,7 @@ public class User extends BaseEntity implements UserDetails {
     private String password;
     private String email;
     private LocalDateTime createDate = LocalDateTime.now();
-    private List<Movie> watchlist;
+    private Set<Movie> watchlist;
     private Set<Role> authorities;
 
     public User() {
@@ -80,11 +79,11 @@ public class User extends BaseEntity implements UserDetails {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    public List<Movie> getWatchlist() {
+    public Set<Movie> getWatchlist() {
         return watchlist;
     }
 
-    public void setWatchlist(List<Movie> watchlist) {
+    public void setWatchlist(Set<Movie> watchlist) {
         this.watchlist = watchlist;
     }
 

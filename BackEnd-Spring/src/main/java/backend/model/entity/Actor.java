@@ -1,9 +1,7 @@
 package backend.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -13,7 +11,7 @@ public class Actor extends BaseEntity {
     private String name;
     private String born;
     private String biography;
-    private Set<Movie> movies;
+    private Set<Movie> movies = new HashSet<>();
 
     public Actor() {
     }
@@ -54,7 +52,10 @@ public class Actor extends BaseEntity {
         this.biography = biography;
     }
 
-    @ManyToMany(mappedBy = "actors", targetEntity = Movie.class)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "actors_movies",
+            joinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id"))
     public Set<Movie> getMovies() {
         return movies;
     }
@@ -63,13 +64,13 @@ public class Actor extends BaseEntity {
         this.movies = movies;
     }
 
-    public void addMovie(Movie movie) {
-        this.movies.add(movie);
-        movie.getCast().add(this);
-    }
-
-    public void removeMovie(Movie movie) {
-        this.movies.remove(movie);
-        movie.getCast().remove(this);
-    }
+//    public void addMovie(Movie movie) {
+//        this.movies.add(movie);
+//        movie.getCast().add(this);
+//    }
+//
+//    public void removeMovie(Movie movie) {
+//        this.movies.remove(movie);
+//        movie.getCast().remove(this);
+//    }
 }

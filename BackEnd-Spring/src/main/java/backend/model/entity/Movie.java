@@ -1,6 +1,7 @@
 package backend.model.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,7 +13,7 @@ public class Movie extends BaseEntity {
     private String producer;
     private String screenwriter;
     private Integer duration;
-    private Set<Actor> cast;
+    private Set<Actor> cast = new HashSet<>();
 
     public Movie() {
     }
@@ -62,7 +63,7 @@ public class Movie extends BaseEntity {
         this.screenwriter = screenwriter;
     }
 
-    @Column(name = "page_count", nullable = false)
+    @Column(name = "duration", nullable = false)
     public Integer getDuration() {
         return duration;
     }
@@ -71,10 +72,7 @@ public class Movie extends BaseEntity {
         this.duration = duration;
     }
 
-    @ManyToMany
-    @JoinTable(name = "movies_actors",
-            joinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "id"))
+    @ManyToMany(mappedBy = "movies", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public Set<Actor> getCast() {
         return cast;
     }
