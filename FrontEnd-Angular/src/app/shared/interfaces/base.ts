@@ -1,4 +1,3 @@
-export interface IBase {
-  _id: string;
-  createDate: string;
+export class Base {
+  id: string;
 }

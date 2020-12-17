@@ -9,7 +9,6 @@ const routes: Routes = [
     component: RegisterComponent,
     data: {
       isLogged: false,
-      noNavigation: true,
       title: 'REGISTER USER'
     },
   },

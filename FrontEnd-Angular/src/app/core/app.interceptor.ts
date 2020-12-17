@@ -7,7 +7,6 @@ import { USE_BASE_URL } from '../shared/constants';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
-  apiUrl = environment.apiUrl;
   baseUrl = environment.baseUrl;
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -16,7 +15,7 @@ export class AppInterceptor implements HttpInterceptor {
       req = req.clone({ url: `${this.baseUrl}${req.url.replace(`${USE_BASE_URL}/`, '')}` });
     }
     if (!withoutApiUrl && !req.url.includes('http')) {
-      req = req.clone({ url: `${this.apiUrl}${req.url}`, withCredentials: true });
+      req = req.clone({ url: `${this.baseUrl}${req.url}`});
     }
     return next.handle(req);
   }

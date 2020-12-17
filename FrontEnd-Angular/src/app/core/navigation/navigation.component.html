@@ -1,32 +1,32 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <!-- Branding Image -->
-  <a class="navbar-brand h1" href="#">
+  <a routerLink="/home" class="navbar-brand h1">
     <img class="d-inline-block" width="50px" alt="Logo" src="./assets/images/logo.png">
     My Film Library
   </a>
   <!-- Authentication Links -->
   <div class="collapse navbar-collapse ml-md-auto" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li *ngIf="!isLogged$ | async" class="nav-item active">
-        <a routerLink="#" class="btn btn-large btn-primary">
+      <li *ngIf="!(isLogged$ | async)" class="nav-item active">
+        <a href="#" class="btn btn-large btn-primary">
           <i class="fa fa-book" aria-hidden="true"></i>
           All Films
         </a>
       </li>
-      <li *ngIf="!isLogged$ | async" class="nav-item active">
+      <li *ngIf="!(isLogged$ | async)" class="nav-item active">
         <a routerLink="/user/login" class="btn btn-large btn-primary">
           <i class="fa fa-sign-in" aria-hidden="true"></i>
           Login
         </a>
       </li>
-      <li *ngIf="!isLogged$ | async" class="nav-item active">
+      <li *ngIf="!(isLogged$ | async)" class="nav-item active">
         <a routerLink="/user/register" class="btn btn-large btn-primary">
           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           Register
         </a>
       </li>
       <li *ngIf="isLogged$ | async" class="nav-item dropdown">
-        <a class="btn btn-large btn-primary dropdown-toggle" id="navbarDropdownMenuLink1"
+        <a href="#" class="btn btn-large btn-primary dropdown-toggle" id="navbarDropdownMenuLink1" type="button"
            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-book" aria-hidden="true"></i>
           Films <span class="caret"></span>
@@ -50,15 +50,12 @@
       <li *ngIf="isLogged$ | async" class="nav-item dropdown">
         <a href="#" class="btn btn-large btn-primary dropdown-toggle" id="navbarDropdownMenuLink3" type="button"
            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Username
+          Hi, Username
           <span class="caret"></span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
-          <form method="post">
-            <button type="submit" class="btn btn-large btn-primary dropdown-item">
-              Logout
-            </button>
-          </form>
+          <a routerLink="/users/profile" class="dropdown-item">Profile</a>
+          <a (click)="logoutHandler()" class="dropdown-item">Logout</a>
         </div>
       </li>
     </ul>

@@ -1,13 +1,13 @@
-@import url('assets/css/reset.css');
-@import url('assets/css/typography.css');
-@import url('assets/css/responsive.css');
-@import url('assets/css/more.css');
-@import "~font-awesome/css/font-awesome.min.css";
-@import "~bootstrap/dist/css/bootstrap.css";
+@import 'assets/css/reset.css';
+@import 'assets/css/typography.css';
+@import 'assets/css/responsive.css';
+@import 'assets/css/more.css';
+@import '~font-awesome/css/font-awesome.min.css';
+@import '~bootstrap/dist/css/bootstrap.css';
 
 
 html, body {
-  background: #333 url("assets/images/background.jpg");
+  background: #333 url('assets/images/background.jpg');
 }
 
 .pad {
@@ -28,10 +28,27 @@ html, body {
   text-align: center;
 }
 
-/*img {*/
-/*  border-radius: 10px;*/
-/*  width: 100px;*/
-/*}*/
+.card {
+  border-radius: 0;
+}
+
+.card-header {
+  font-family: Georgia, serif;
+  text-align: center;
+  font-size: 1.5em;
+  color: #006699;
+}
+
+label {
+  margin: 10px;
+  padding-top: 10px;
+  font-weight: bold;
+  line-height: 1.3em;
+  color: #006699;
+  font-style: italic;
+  text-align: right;
+}
+
 
 .form-control, .form-control:required, div.form-group textarea {
   background-color: #eeeeee;
@@ -77,12 +94,6 @@ select.form-control:not([size]):not([multiple]) {
 .a-decor:link, .a-decor:visited {
   text-decoration: none;
   color: #000;
-}
-
-.card-header {
-  text-align: center;
-  font-size: 1.5em;
-  color: #006699;
 }
 
 .thumbnail {

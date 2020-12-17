@@ -2,4 +2,20 @@
   <div class="row">
     <h1 class="display-2 text-center font-italic">Welcome to the Film Library</h1>
   </div>
+  <div class="row justify-content-center" *ngIf="!(isLogged$ | async)">
+    <ul class="nav">
+      <li class="nav-item">
+        <a routerLink="/users/login" class="btn btn-large btn-primary">
+          <i class="fa fa-sign-in" aria-hidden="true"></i>
+          Login
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/users/register" class="btn btn-large btn-primary">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          Register
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>

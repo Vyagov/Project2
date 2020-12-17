@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NavigationComponent} from './navigation/navigation.component';
 import {RouterModule} from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
-import {AuthGuard} from './guards/auth.guard';
+// import {AuthGuard} from './guards/auth.guard';
 import {AuthService} from './auth.service';
 import {appInterceptorProvider} from './app.interceptor';
 
@@ -18,7 +18,7 @@ import {appInterceptorProvider} from './app.interceptor';
     RouterModule
   ],
   providers: [
-    AuthGuard,
+    // AuthGuard,
     appInterceptorProvider,
     AuthService
   ],

@@ -1,10 +1,11 @@
-import { IBase } from './base';
+import { Base } from './base';
 
-export interface IUser extends IBase {
+export class User extends Base {
   watchlist: string[];
   firstName: string;
   lastName: string;
   username: string;
   password: string;
   email: string;
+  createDate: string;
 }

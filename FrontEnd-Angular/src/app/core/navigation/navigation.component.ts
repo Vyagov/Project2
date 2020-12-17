@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
 
@@ -7,20 +7,18 @@ import {Router} from '@angular/router';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-export class NavigationComponent implements OnInit {
-  hideNavigation = false;
-
+export class NavigationComponent implements OnDestroy {
   isLogged$ = this.authService.isLogged$;
-  isReady$ = this.authService.isReady$;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router) {
   }
 
   logoutHandler(): void {
-    this.authService.logout().subscribe(() => this.router.navigate(['/user/login']));
+    this.authService.logout().subscribe(() => this.router.navigate(['/users/login']));
   }
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
   }
-
 }

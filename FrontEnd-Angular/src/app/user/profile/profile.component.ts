@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../core/auth.service';
 import {UserService} from '../user.service';
 
@@ -10,30 +10,30 @@ import {UserService} from '../user.service';
 export class ProfileComponent implements OnInit {
 
   inEditMode = false;
-  currentUser$ = this.authService.currentUser$;
+  // currentUser$ = this.authService.currentUser$;
 
   constructor(
     private authService: AuthService,
     private userService: UserService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
-    this.userService.getCurrentUserProfile().subscribe();
+    // this.userService.getCurrentUserProfile().subscribe();
   }
 
   toggleEditMode(): void {
     this.inEditMode = !this.inEditMode;
   }
 
-  submitHandler(data: any): void {
-    this.userService.updateProfile(data).subscribe({
-      next: () => {
-        this.inEditMode = false;
-      },
-      error: (err) => {
-        console.error(err);
-      }
-    });
-  }
-
+  // submitHandler(data: any): void {
+  //   this.userService.updateProfile(data).subscribe({
+  //     next: () => {
+  //       this.inEditMode = false;
+  //     },
+  //     error: (err) => {
+  //       console.error(err);
+  //     }
+  //   });
+  // }
 }

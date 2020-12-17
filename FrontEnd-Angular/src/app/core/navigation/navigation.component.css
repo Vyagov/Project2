@@ -20,14 +20,12 @@ div.dropdown-menu {
   border-radius: 0;
 }
 
-.dropdown-menu a:hover,
-.dropdown-menu > form > button:hover {
+.dropdown-menu a:hover {
   background-color: #007bff;
 }
 
 .dropdown-menu button,
 .dropdown-menu a,
-.dropdown-menu a:hover,
-.dropdown-menu > form > button:hover {
+.dropdown-menu a:hover {
   color: white;
 }

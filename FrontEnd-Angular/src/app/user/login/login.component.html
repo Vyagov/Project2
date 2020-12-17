@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="card">
+  <div class="card-header">Login</div>
+  <div class="card-body">
+    <form #f="ngForm" (ngSubmit)="f.form.valid && login()" #f="ngForm" role="form" novalidate>
+      <small class="alert alert-danger h5 row" role="alert">
+        <strong class="text-center">Incorrect username or password!</strong>
+      </small>
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+      <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <label for="username" class="col-4 col-form-label">Username</label>
+        <div class="col-6">
+          <input id="username" type="text" class="form-control" name="username" [(ngModel)]="user.username"
+                 #username="ngModel" required autofocus>
+        </div>
+        <div *ngIf="f.submitted && !username.valid" class="help-block">an valid email is required</div>
+      </div>
+      <div class="form-group row">
+        <label for="password" class="col-4 col-form-label">Password</label>
+        <div class="col-6">
+          <input id="password" type="password" class="form-control" name="password" [(ngModel)]="user.password"
+                 #password="ngModel" required>
+        </div>
+        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+      </div>
+      <div class="form-group row">
+        <div class="col-8 offset-4">
+          <button type="submit" class="btn btn-large btn-primary">Login</button>
+          <a class="btn btn-link" href="#">Forgot Your Password?</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

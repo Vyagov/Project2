@@ -1,1 +1,51 @@
-<p>register works!</p>
+<div class="card">
+  <div class="card-header">Register</div>
+  <div class="card-body">
+    <form class="register" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+      <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
+        <label for="firstName" class="col-lg-4 col-form-label">First Name</label>
+        <div class="col-lg-6">
+          <input [(ngModel)]="user.firstName" #firstName="ngModel" id="firstName"
+                 type="text" class="form-control" name="firstName" autofocus>
+          <small *ngIf="f.submitted && !firstName.valid" class="bg-danger">an valid email is required</small>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !lastName.valid }">
+        <label for="lastName" class="col-lg-4 col-form-label">Last Name</label>
+        <div class="col-lg-6">
+          <input [(ngModel)]="user.lastName" #lastName="ngModel" id="lastName"
+                 type="text" class="form-control" name="lastName" autofocus>
+          <small *ngIf="f.submitted && !lastName.valid" class="bg-danger">an valid email is required</small>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+        <label for="email" class="col-lg-4 col-form-label">E-Mail Address</label>
+        <div class="col-lg-6">
+          <input [(ngModel)]="user.email" #email="ngModel" id="email" type="text" class="form-control" name="email">
+          <small *ngIf="f.submitted && !email.valid" class="bg-danger">an valid email is required</small>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <label for="username" class="col-lg-4 col-form-label">Username</label>
+        <div class="col-lg-6">
+          <input [(ngModel)]="user.username" #username="ngModel" id="username" type="text" class="form-control" name="username">
+          <small *ngIf="f.submitted && !username.valid" class="bg-danger">an valid email is required</small>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <label for="password" class="col-lg-4 col-form-label">Password</label>
+        <div class="col-lg-6">
+          <input [(ngModel)]="user.password" #password="ngModel" id="password"
+                 type="password" class="form-control" name="password">
+          <small *ngIf="f.submitted && !password.valid" class="bg-danger">an valid email is required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-6 offset-md-4">
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
